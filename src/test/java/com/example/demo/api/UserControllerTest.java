@@ -38,7 +38,7 @@ class UserControllerTest {
                 .build();
 
         //when
-        when(userService.getUser(anyLong())).thenReturn(Optional.of(userServiceDTO));
+        when(userService.findUserById(anyLong())).thenReturn(Optional.of(userServiceDTO));
 
         //then
         mockMvc.perform(get("/api/users/1"))
@@ -51,7 +51,7 @@ class UserControllerTest {
     @Test
     public void givenBadUserId_getUser_shouldReturnNotFoundStatus() throws Exception {
         //when
-        when(userService.getUser(anyLong())).thenReturn(Optional.empty());
+        when(userService.findUserById(anyLong())).thenReturn(Optional.empty());
 
         //then
         mockMvc.perform(get("/api/users/1"))

@@ -41,7 +41,7 @@ class UserServiceImplTest {
 
         //when
         when(userRepository.findById(id)).thenReturn(Optional.of(user));
-        var userServiceDTO = userService.getUser(1L).get();
+        var userServiceDTO = userService.findUserById(1L).get();
 
         //then
         assertThat(userServiceDTO.getName()).isEqualTo(user.getName());
@@ -53,7 +53,7 @@ class UserServiceImplTest {
     void givenBadUserId_getUser_shouldReturnEmptyOptional() {
         //when
         when(userRepository.findById(anyLong())).thenReturn(Optional.empty());
-        var userServiceDTO = userService.getUser(1L);
+        var userServiceDTO = userService.findUserById(1L);
 
         //then;
         assertThat(userServiceDTO.isEmpty()).isTrue();

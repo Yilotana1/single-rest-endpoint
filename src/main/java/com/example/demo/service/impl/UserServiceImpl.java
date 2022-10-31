@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    public Optional<UserServiceDTO> getUser(Long id) {
+    public Optional<UserServiceDTO> findUserById(Long id) {
         var user = userRepository.findById(id);
         return user.map(this::mapToDTO);
     }

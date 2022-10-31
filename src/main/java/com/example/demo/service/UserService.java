@@ -5,5 +5,5 @@ import com.example.demo.service.dto.UserServiceDTO;
 import java.util.Optional;
 
 public interface UserService {
-    Optional<UserServiceDTO> getUser(Long id);
+    Optional<UserServiceDTO> findUserById(Long id);
 }
