@@ -24,13 +24,13 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable("id")  long id){
-         var userDTO = userService.findUserById(id).map(this::mapToUserDTO);
+         var userDTO = userService.findUserById(id).map(this::toUserDTO);
          return userDTO
                  .map(dto -> new ResponseEntity<>(dto, HttpStatus.OK))
                  .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    private UserDTO mapToUserDTO(UserServiceDTO userServiceDTO){
+    private UserDTO toUserDTO(UserServiceDTO userServiceDTO){
         var userDTO = new UserDTO();
         userDTO.setName(userServiceDTO.getName());
         userDTO.setLastName(userServiceDTO.getLastName());

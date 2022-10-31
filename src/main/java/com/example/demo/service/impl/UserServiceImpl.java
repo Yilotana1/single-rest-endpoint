@@ -25,9 +25,9 @@ public class UserServiceImpl implements UserService {
 
     public Optional<UserServiceDTO> findUserById(Long id) {
         var user = userRepository.findById(id);
-        return user.map(this::mapToDTO);
+        return user.map(this::toUserServiceDTO);
     }
-    private UserServiceDTO mapToDTO(User user){
+    private UserServiceDTO toUserServiceDTO(User user){
         var userDTO = new UserServiceDTO();
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
