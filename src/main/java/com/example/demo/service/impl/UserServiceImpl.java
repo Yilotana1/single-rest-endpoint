@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
         userDTO.setId(user.getId());
         userDTO.setName(user.getName());
         userDTO.setLastName(user.getLastName());
-        int age = Period.between(user.getBirthDate(), LocalDate.now()).getYears();
+        var age = Period.between(user.getBirthDate(), LocalDate.now()).getYears();
         userDTO.setAge(age);
         return userDTO;
     }
